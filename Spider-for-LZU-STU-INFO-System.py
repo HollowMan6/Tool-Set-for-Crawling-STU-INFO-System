@@ -99,7 +99,7 @@ class qdujw:
                 wi.write(image)
                 wi.close()
                 wf.close()
-                print("成功！已保存到本地！")  # Success, saved locally
+                print(sid+"成功！已保存到本地！")  # Success, saved locally
 
 
 # 打开数据文件 Open data files
