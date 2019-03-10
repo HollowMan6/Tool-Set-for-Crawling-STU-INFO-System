@@ -24,8 +24,6 @@ import getpass
 import requests
 # 识别验证码 Captcha Verification
 import pytesseract
-# 解析HTML界面 Parsing HTML Interface
-from lxml import etree
 
 
 class qdujw:
@@ -43,9 +41,8 @@ class qdujw:
         # 页面相关设置 Page Related Settings
         loginurl = 'http://jwk.lzu.edu.cn/academic/j_acegi_security_check'
         codeurl = 'http://jwk.lzu.edu.cn/academic/getCaptcha.do'
-        userurl = 'http://jwk.lzu.edu.cn/academic/showPersonalInfo.do'
-        # 写入文件 Write file
-        wf = open('new.txt', 'a')
+        userurl = 'http://jwk.lzu.edu.cn/academic/student/studentinfo/studentInfoModifyIndex.do?frombase=0&wantTag=0&groupId=&moduleId=2060'
+
         # 验证码 Captcha
         code = self.s.get(codeurl, headers=self.headers, stream=True)
         img = Image.open(io.BytesIO(code.content))
@@ -86,19 +83,27 @@ class qdujw:
         # 验证码匹配成功 Captcha matched
         else:
             userpage = self.s.get(userurl).content
-            name = etree.HTML(userpage.decode(
-                'utf-8', 'ignore')).xpath('/html/body/center/table[1]/tr[1]/td[2]/text()')
-            if str(name) == '[]':
+            imageid = ''.join(re.findall(
+                r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', str(userpage)))
+            imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
+            name = ''.join(re.findall(r'name="realname" value="(.+?)"',
+                                      str(userpage.decode('utf-8', 'ignore'))))
+            image = self.s.get(imagepage).content
+            if str(imageid) == '[]':
                 print(sid+"失败！")  # Fail
             else:
-                print(str(name)+"成功！新增一条记录！")  # Success, new record
-                wf.write(line)
-        wf.close()
+                # 写入文件 Write file
+                wf = open("data/"+name+sid.replace("\n", '')+'.html', 'wb')
+                wi = open("data/"+name+sid.replace("\n", '')+'.jpg', 'wb')
+                wf.write(userpage)
+                wi.write(image)
+                wi.close()
+                wf.close()
+                print("成功！已保存到本地！")  # Success, saved locally
 
 
-# 打开数据文件
+# 打开数据文件 Open data files
 f = open("list.txt")
-# 测试学号和密码是否一样
 line = f.readline()
 while line:
     sid = line
