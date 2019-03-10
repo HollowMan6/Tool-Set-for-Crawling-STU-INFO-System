@@ -89,7 +89,7 @@ class qdujw:
             name = ''.join(re.findall(r'name="realname" value="(.+?)"',
                                       str(userpage.decode('utf-8', 'ignore'))))
             image = self.s.get(imagepage).content
-            if str(imageid) == '':
+            if str(imageid) == '[]':
                 print(sid+"失败！")  # Fail
             else:
                 # 写入文件 Write file
