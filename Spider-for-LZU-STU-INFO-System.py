@@ -96,10 +96,13 @@ class qdujw:
                 # 写入文件 Write file
                 wf = open("data/"+name+sid.replace("\n", '')+'.html', 'wb')
                 wi = open("data/"+name+sid.replace("\n", '')+'.jpg', 'wb')
+                fw = open("success.txt", 'a')
                 wf.write(userpage)
                 wi.write(image)
+                fw.write(sid)
                 wi.close()
                 wf.close()
+                fw.close()
                 print(sid+"成功！已保存到本地！")  # Success, saved locally
 
 
