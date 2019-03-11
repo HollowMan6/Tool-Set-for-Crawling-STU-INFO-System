@@ -84,6 +84,8 @@ class qdujw:
         else:
             userpage = self.s.get(userurl).content
             gbcontent = str(userpage.decode('gb2312', 'ignore'))
+            nw = open("latest.txt", 'w')
+            nw.write(sid)
             if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access
                 print(sid+"失败！")  # Fail
             else:
@@ -104,6 +106,7 @@ class qdujw:
                 wf.close()
                 fw.close()
                 print(sid+"成功！已保存到本地！")  # Success, saved locally
+            nw.close()
 
 
 # 打开数据文件 Open data files
