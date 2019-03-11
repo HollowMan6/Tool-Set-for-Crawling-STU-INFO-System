@@ -83,15 +83,16 @@ class qdujw:
         # 验证码匹配成功 Captcha matched
         else:
             userpage = self.s.get(userurl).content
-            imageid = ''.join(re.findall(
-                r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', str(userpage)))
-            imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
-            name = ''.join(re.findall(r'name="realname" value="(.+?)"',
-                                      str(userpage.decode('utf-8', 'ignore'))))
-            image = self.s.get(imagepage).content
-            if str(imageid) == '[]':
+            gbcontent = str(userpage.decode('gb2312', 'ignore'))
+            if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access
                 print(sid+"失败！")  # Fail
             else:
+                imageid = ''.join(re.findall(
+                    r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))
+                imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
+                name = ''.join(re.findall(r'name="realname" value="(.+?)"',
+                                          str(userpage.decode('utf-8', 'ignore'))))
+                image = self.s.get(imagepage).content
                 # 写入文件 Write file
                 wf = open("data/"+name+sid.replace("\n", '')+'.html', 'wb')
                 wi = open("data/"+name+sid.replace("\n", '')+'.jpg', 'wb')
