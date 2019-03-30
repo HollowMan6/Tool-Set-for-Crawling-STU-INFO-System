@@ -2,6 +2,7 @@
 
 Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
+**新**: 新增 LZU综合管理信息系统爬虫 [Code](Spider-for-LZU-GraduateSTU-INFO-System.py)
 
 适用于 [LZU](http://jwk.lzu.edu.cn) 和 [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp)等同类教务系统。
 
@@ -14,8 +15,7 @@ Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
-
-
+**NEW**: Add Spider-for-LZU-GraduateSTU-INFO-System [Code](Spider-for-LZU-GraduateSTU-INFO-System.py)
 
 It is suitable for STU-INFO systems such as [LZU](http://jwk.lzu.edu.cn) and [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) .
 
