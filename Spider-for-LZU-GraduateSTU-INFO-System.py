@@ -90,7 +90,8 @@ class qdujw:
                 print(sid+"失败！")  # Fail
             else:
                 imagepage = "http://gms.lzu.edu.cn/graduate/common/showImage.jsp"
-                name = ''.join(re.findall(r'<th>姓名</th><td>(.+?)</td>',gbcontent))
+                name = ''.join(re.findall(
+                    r'<th>姓名</th><td>(.+?)</td>', gbcontent))
                 image = self.s.get(imagepage).content
                 # 写入文件 Write file
                 wf = open("data/"+name+sid.replace("\n", '')+'.html', 'wb')
@@ -102,15 +103,16 @@ class qdujw:
                 wi.close()
                 wf.close()
                 fw.close()
-                print(sid+"成功！已保存到本地！")  # Success, saved locally
+                print(sid+"\n成功！已保存到本地！")  # Success, saved locally
             nw.close()
+
 
 # 打开数据文件 Open data files
 f = open("list.txt")
 line = f.readline()
 while line:
-    sid = line
-    passwd = line
+    sid = line.replace("\n", "")
+    passwd = line.replace("\n", "")
     try:
         qdujw().login()
     except Exception:
