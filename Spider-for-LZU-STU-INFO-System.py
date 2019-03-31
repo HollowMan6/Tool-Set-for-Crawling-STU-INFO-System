@@ -74,7 +74,7 @@ def OCR_lmj(img_path):
     text = pytesseract.image_to_string(out)
 
     # 去掉识别结果中的特殊字符 Remove special characters from recognition results
-    exclude_char_list = ''' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW€XYZ§。，；：“”’‘￥~·.:\|'"?![],()~@#$%^&*_+-={};/¥'''
+    exclude_char_list = ''' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW€XYZ§。，；：£©®é¢™“”’‘￥~·.:\|'"?![],()~@#$%^&*_+-={};/¥'''
     text = ''.join([x for x in text if x not in exclude_char_list])
     return text
 
