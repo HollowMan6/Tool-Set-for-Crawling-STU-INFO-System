@@ -87,7 +87,7 @@ class qdujw:
             nw = open("latest.txt", 'w')
             nw.write(sid)
             if "详细错误信息" in gbcontent:  # Refuse to access
-                print(sid+"失败！")  # Fail
+                print(sid+"\n失败！")  # Fail
             else:
                 imagepage = "http://gms.lzu.edu.cn/graduate/common/showImage.jsp"
                 name = ''.join(re.findall(
@@ -99,7 +99,7 @@ class qdujw:
                 fw = open("success.txt", 'a')
                 wf.write(userpage)
                 wi.write(image)
-                fw.write(sid)
+                fw.write(sid+"\n")
                 wi.close()
                 wf.close()
                 fw.close()
