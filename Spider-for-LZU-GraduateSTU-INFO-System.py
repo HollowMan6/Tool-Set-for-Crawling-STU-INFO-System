@@ -148,9 +148,6 @@ class qdujw:
                         fw = open("success.txt", 'a')
                         fw.write(sid+"\n")
                         fw.close()
-                        nw = open("latest.txt", 'w')
-                        nw.write(sid)
-                        nw.close()
                         print(sid+"\n成功！已保存到本地！")  # Success, saved locally
                         # 释放锁 Release lock
                         lock.release()

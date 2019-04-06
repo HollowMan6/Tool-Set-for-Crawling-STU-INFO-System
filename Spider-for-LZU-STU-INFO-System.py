@@ -147,9 +147,6 @@ class qdujw:
                         # That is, the next second or other thread comes in turn and finds that it has been locked and can only wait for the first thread to release the lock.
                         # When the first thread releases the lock, subsequent threads compete.
                         lock.acquire()
-                        nw = open("latest.txt", 'w')
-                        nw.write(sid)
-                        nw.close()
                         fw = open("success.txt", 'a')
                         fw.write(sid)
                         fw.close()
