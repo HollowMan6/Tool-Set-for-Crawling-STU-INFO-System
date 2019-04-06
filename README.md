@@ -6,7 +6,9 @@ Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 适用于 [LZU](http://jwk.lzu.edu.cn) 和 [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp)等同类教务系统。
 
-验证码采用Tesseract-OCR识别,验证码识别准确率在2/3左右。
+验证码采用Tesseract-OCR识别,其中LZU综合管理信息系统爬虫验证码识别准确率在2/3左右。
+
+采用多线程编程，爬取速度获得了很大提升！
 
 
 **警告**：
@@ -19,7 +21,9 @@ Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 It is suitable for STU-INFO systems such as [LZU](http://jwk.lzu.edu.cn) and [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) .
 
-The Captcha is identified by Tesseract-OCR, Captcha recognition accuracy is about 2/3.
+The Captcha is identified by Tesseract-OCR, Captcha recognition accuracy in Spider-for-LZU-GraduateSTU-INFO-System is about 2/3.
+
+Using multithreading programming, the Spider's speed has been greatly improved!
 
 
 **Warning**:
