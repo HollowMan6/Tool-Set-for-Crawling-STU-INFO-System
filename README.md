@@ -10,6 +10,8 @@ Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 采用多线程编程，爬取速度获得了很大提升！
 
+爬取结束后，你可以选用[数据去重脚本](De-duplication.py)去除因重复爬取而产生的重复数据。
+
 
 **警告**：
 
@@ -24,6 +26,8 @@ It is suitable for STU-INFO systems such as [LZU](http://jwk.lzu.edu.cn) and [QD
 The Captcha is identified by Tesseract-OCR, Captcha recognition accuracy in Spider-for-LZU-GraduateSTU-INFO-System is about 2/3.
 
 Using multithreading programming, the Spider's speed has been greatly improved!
+
+After the crawl, you can choose [De-duplication Script](De-duplication.py) to remove duplicate data caused by repeated crawling.
 
 
 **Warning**:
