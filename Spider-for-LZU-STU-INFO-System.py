@@ -122,6 +122,8 @@ class qdujw:
                     gbcontent = str(userpage.decode('gb2312', 'ignore'))
                     if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access
                         print(sid+"失败！")  # Fail
+                        # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
+                        threadmax.release()
                     else:
                         imageid = ''.join(re.findall(
                             r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))

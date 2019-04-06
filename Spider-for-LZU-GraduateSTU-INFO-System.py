@@ -152,11 +152,11 @@ class qdujw:
                         print(sid+"\n成功！已保存到本地！")  # Success, saved locally
                         # 释放锁 Release lock
                         lock.release()
-                        # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
-                        threadmax.release()
 
             else:
                 qdujw().login(sid, passwd)
+            # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
+            threadmax.release()
         except Exception:
             pass
 
