@@ -122,6 +122,8 @@ class qdujw:
                     gbcontent = str(userpage.decode('utf-8', 'ignore'))
                     if "详细错误信息" in gbcontent:  # Refuse to access
                         print(sid+"\n失败！")  # Fail
+                        # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
+                        threadmax.release()
                     else:
                         imagepage = "http://gms.lzu.edu.cn/graduate/common/showImage.jsp"
                         name = ''.join(re.findall(
@@ -152,11 +154,11 @@ class qdujw:
                         print(sid+"\n成功！已保存到本地！")  # Success, saved locally
                         # 释放锁 Release lock
                         lock.release()
+                        # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
+                        threadmax.release()
 
             else:
                 qdujw().login(sid, passwd)
-            # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
-            threadmax.release()
         except Exception:
             pass
 
