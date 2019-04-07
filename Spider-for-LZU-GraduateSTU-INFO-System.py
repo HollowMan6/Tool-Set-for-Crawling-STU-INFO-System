@@ -157,6 +157,7 @@ class qdujw:
             else:
                 qdujw().login(sid, passwd)
         except Exception:
+            threadmax.release()
             pass
 
 
