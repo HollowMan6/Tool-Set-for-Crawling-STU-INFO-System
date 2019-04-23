@@ -39,7 +39,7 @@ threadmax = threading.BoundedSemaphore(32)
 lock = threading.Lock()
 l = []
 flag = False
-
+count=0
 # 按照阈值进行二值化处理 Binarization according to threshold
 # threshold: 像素阈值
 
@@ -106,7 +106,7 @@ class qdujw:
 
     # 综合信息系统登录 Login GraduateSTU-INFO System
     def login(self, sid, passwd, url):
-        global lb, T
+        global lb, T, count,a
         # 页面相关设置 Page Related Settings
         loginurl = url+'/graduate/j_acegi_security_check'
         codeurl = url+'/graduate/getCaptcha.do'
@@ -155,6 +155,8 @@ class qdujw:
                         wi.close()
                         lb.insert(tk.END, name + " " + sid.replace("\n", ''))
                         T.insert(tk.END, sid+"\n成功！已保存到本地！\n")
+                        count+=1
+                        a.set("总计 "+str(count)+" 个")
                         # Success, saved locally
                         # 上锁，第一个线程如果申请到锁，会在执行公共数据的过程中持续阻塞后续线程
                         # 即后续第二个或其他线程依次来了发现已经被上锁，只能等待第一个线程释放锁
@@ -254,7 +256,10 @@ tk.Radiobutton(root, text='自定义：', variable=v,
                value=2, command=r2).pack(anchor=tk.W)
 v.set(2)
 e.pack(anchor=tk.W)
-tk.Label(text='爬取到的姓名和账号：').pack(anchor=tk.W)
+tk.Label(text='爬取成功的姓名和账号:').pack(anchor=tk.W)
+a=tk.StringVar()
+a.set("总计 0 个")
+tk.Label(textvariable=a).pack(anchor=tk.W)
 lbv = tk.StringVar()
 lb = tk.Listbox(root, selectmode=tk.SINGLE, listvariable=lbv)
 scr = tk.Scrollbar(root)

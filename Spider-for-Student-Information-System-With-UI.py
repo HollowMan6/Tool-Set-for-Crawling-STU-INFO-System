@@ -39,7 +39,7 @@ threadmax = threading.BoundedSemaphore(32)
 lock = threading.Lock()
 l = []
 flag = False
-
+count=0
 
 # 按照阈值进行二值化处理 Binarization according to threshold
 # threshold: 像素阈值
@@ -105,7 +105,7 @@ class qdujw:
 
     # 教务系统登录 Login STU-INFO System
     def login(self, sid, passwd, url):
-        global lb, T
+        global lb, T, count,a
         # 页面相关设置 Page Related Settings
         loginurl = url+'/academic/j_acegi_security_check'
         codeurl = url+'/academic/getCaptcha.do'
@@ -155,6 +155,8 @@ class qdujw:
                                   sid.replace("\n", '')+'.jpg', 'wb')
                         wi.write(image)
                         lb.insert(tk.END, name + " " + sid.replace("\n", ''))
+                        count+=1
+                        a.set("总计 "+str(count)+" 个")
                         # Success, saved locally
                         T.insert(tk.END, sid+"成功！已保存到本地！\n")
                         wi.close()
@@ -277,7 +279,10 @@ tk.Radiobutton(root, text='自定义：', variable=v,
                value=4, command=r4).pack(anchor=tk.W)
 v.set(4)
 e.pack(anchor=tk.W)
-tk.Label(text='爬取到的姓名和账号：').pack(anchor=tk.W)
+tk.Label(text='爬取成功的姓名和账号:').pack(anchor=tk.W)
+a=tk.StringVar()
+a.set("总计 0 个")
+tk.Label(textvariable=a).pack(anchor=tk.W)
 lbv = tk.StringVar()
 lb = tk.Listbox(root, selectmode=tk.SINGLE, listvariable=lbv)
 scr = tk.Scrollbar(root)
