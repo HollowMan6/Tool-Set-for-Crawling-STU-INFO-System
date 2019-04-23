@@ -183,13 +183,6 @@ class qdujw:
 
 
 dlist = []
-# 打开数据文件 Open data files
-f = open("list.txt")
-line = f.readline()
-while line:
-    dlist.append(line)
-    line = f.readline()
-f.close()
 
 
 # 定义爬虫线程 Define Spider Thread
