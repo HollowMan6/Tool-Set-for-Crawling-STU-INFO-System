@@ -19,6 +19,7 @@ from PIL import Image
 from PIL import ImageTk
 # 文件处理 File processing
 import io
+import os
 # 正则表达式搜索 Regular expression search
 import re
 # 使能够在命令行下输入密码 Enable Entering a password at the command line
@@ -139,7 +140,7 @@ class qdujw:
                         # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
                         threadmax.release()
                     else:
-                        imagepage = "http://gms.lzu.edu.cn/graduate/common/showImage.jsp"
+                        imagepage = url+"/graduate/common/showImage.jsp"
                         name = ''.join(re.findall(
                             r'<th>姓名</th><td>(.+?)</td>', gbcontent))
                         image = self.s.get(imagepage).content
@@ -178,18 +179,11 @@ class qdujw:
 
 
 dlist = []
-# 打开数据文件 Open data files
-f = open("list.txt")
-line = f.readline()
-while line:
-    dlist.append(line.replace("\n", ""))
-    line = f.readline()
-f.close()
 
 
 # 定义爬虫线程 Define Spider Thread
 def main():
-    global url
+    global url, flag
     for line in dlist:
         # 增加信号量，可用信号量减一 Increase the semaphore and subtract one from the semaphore
         threadmax.acquire()
@@ -198,23 +192,40 @@ def main():
         l.append(t)
     for t in l:
         t.join()
+    tkinter.messagebox .showinfo('完成', 'list.txt中的账号已经爬取完毕！', parent=root)
+    flag = False
 
 
 # 开始爬虫 Start Spidering
 def run():
-    global url, root, flag, e
-    if v.get() == 2:
-        url = e.get()
-    if url == "":
-        tkinter.messagebox .showerror('错误', '请选择或自定义要爬取的网站！', parent=root)
-    elif flag == True:
-        tkinter.messagebox .showwarning(
-            '警告', '已经在爬取中，请耐心等待！退出请点击“退出按钮”。\n如果已经爬取完成，请重新打开程序来继续另外网站的爬取。', parent=root)
-    else:
-        flag = True
-        t = threading.Thread(target=main)
-        t.setDaemon(True)
-        t.start()
+    global url, root, flag, e, dlist
+    dlist = []
+    # 打开数据文件 Open data files
+    try:
+        isExists = os.path.exists("./data")
+        if not isExists:
+            os.makedirs("./data")
+        f = open("list.txt")
+        line = f.readline()
+        while line:
+            dlist.append(line.replace("\n", ""))
+            line = f.readline()
+        f.close()
+        if v.get() == 2:
+            url = e.get()
+        if url == "":
+            tkinter.messagebox .showerror('错误', '请选择或自定义要爬取的网站！', parent=root)
+        elif flag == True:
+            tkinter.messagebox .showwarning(
+                '警告', '已经在爬取中，请耐心等待！退出请点击“退出按钮”。', parent=root)
+        else:
+            flag = True
+            t = threading.Thread(target=main)
+            t.setDaemon(True)
+            t.start()
+    except FileNotFoundError:
+        tkinter.messagebox .showerror(
+            '错误', '请准备好数据文件list.txt并放在软件的同一目录下！', parent=root)
 
 
 # Tkinter 界面设定 UI Setting
@@ -260,7 +271,7 @@ S.pack(side=tk.RIGHT, fill=tk.Y)
 T.pack(side=tk.RIGHT, fill=tk.Y)
 S.config(command=T.yview)
 T.config(yscrollcommand=S.set)
-quote = """警告：\n仅供测试使用，不可用于任何非法用途！\n对于使用本代码所造成的一切不良后果，本人将不负任何责任！\n\n说明：\n可以自定义爬取站点，也可以选择内置站点爬取。\n已经爬取到的账号双击左键查看照片，双击右键查看爬取的信息网页源代码。\n请事先在软件目录下新建data文件夹和账号数据list.txt文件\n\n爬取信息:\n"""
+quote = """警告：\n仅供测试使用，不可用于任何非法用途！\n对于使用本代码所造成的一切不良后果，本人将不负任何责任！\n\n说明：\n可以自定义爬取站点，也可以选择内置站点爬取。\n已经爬取到的账号双击鼠标左键查看照片，双击鼠标右键查看爬取的信息网页源代码。\n请事先在软件目录下准备好账号数据list.txt文件\n\n爬取信息:\n"""
 T.insert(tk.END, quote)
 
 
@@ -269,17 +280,22 @@ def ShowPic(self):
     global lb
     top = tk.Toplevel()
     top.title('查看照片')
-    im = Image.open("data/"+lb.get(lb.curselection()).replace(" ", '')+".jpg")
-    img = ImageTk.PhotoImage(im)
-    imLabel = tk.Label(top, image=img)
-    imLabel.pack()
-    top.mainloop()
+    try:
+        im = Image.open(
+            "data/"+lb.get(lb.curselection()).replace(" ", '')+".jpg")
+        img = ImageTk.PhotoImage(im)
+        imLabel = tk.Label(top, image=img)
+        imLabel.pack()
+        top.mainloop()
+    except FileNotFoundError:
+        top.destroy()
+        tkinter.messagebox .showerror('错误', '找不到图片！', parent=root)
 
 
 def ShowInfo(self):
     global lb
     top = tk.Toplevel()
-    top.title('查看信息源代码')
+    top.title('查看信息源码')
     top.geometry('350x600')
     S1 = tk.Scrollbar(top)
     T1 = tk.Text(top, height=4, width=50)
@@ -287,12 +303,16 @@ def ShowInfo(self):
     T1.pack(side=tk.RIGHT, fill=tk.Y)
     S1.config(command=T1.yview)
     T1.config(yscrollcommand=S1.set)
-    fread = open("data/"+lb.get(lb.curselection()).replace(" ",
-                                                           '')+".html", 'r', encoding='UTF-8')
-    txt = fread.read()
-    fread.close()
-    T1.insert(tk.END, txt)
-    top.mainloop()
+    try:
+        fread = open("data/"+lb.get(lb.curselection()).replace(" ",
+                                                               '')+".html", 'r', encoding='UTF-8')
+        txt = fread.read()
+        fread.close()
+        T1.insert(tk.END, txt)
+        top.mainloop()
+    except FileNotFoundError:
+        top.destroy()
+        tkinter.messagebox .showerror('错误', '找不到HTML文件！', parent=root)
 
 
 lb.bind("<Double-Button-1>", ShowPic)

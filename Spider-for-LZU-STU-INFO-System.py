@@ -18,6 +18,7 @@ import threading
 from PIL import Image
 # 文件处理 File processing
 import io
+import os
 # 正则表达式搜索 Regular expression search
 import re
 # 使能够在命令行下输入密码 Enable Entering a password at the command line
@@ -171,6 +172,9 @@ while line:
     dlist.append(line)
     line = f.readline()
 f.close()
+isExists = os.path.exists("./data")
+if not isExists:
+    os.makedirs("./data")
 # 使用多线程 Using multithreading
 
 # 限制线程的最大数量为32个 The maximum number of restricted threads is 32
@@ -186,3 +190,4 @@ for line in dlist:
     l.append(t)
 for t in l:
     t.join()
+print('list.txt中的账号已经爬取完毕!')
