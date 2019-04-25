@@ -178,7 +178,6 @@ class qdujw:
             else:
                 qdujw().login(sid, passwd, url)
         except Exception:
-            T.insert(tk.END, "程序运行错误!\n")
             threadmax.release()
             pass
 
