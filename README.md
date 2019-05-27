@@ -1,5 +1,8 @@
 # Spider-for-LZU-STU-INFO-System
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/)
+
 Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 **新**: 新增 [LZU综合管理信息系统爬虫](http://gms.lzu.edu.cn/graduate/index.do) [脚本](Spider-for-LZU-GraduateSTU-INFO-System.py)
