@@ -7,11 +7,15 @@ Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
 **新**: 新增 学生信息系统爬虫带UI版 [脚本](Spider-for-Student-Information-System-With-UI.py)
 
-[Win程序:](Spider-for-Student-Information-System-With-UI.exe) ![](Spider-for-Student-Information-System-With-UI.PNG) 
+[Win程序:](Spider-for-Student-Information-System-With-UI.exe) 
+
+![](Spider-for-Student-Information-System-With-UI.PNG) 
 
 研究生综合管理信息系统爬虫带UI版 [脚本](Spider-for-Graduate-Student-Information-System-With-UI.py)
 
-[Win程序:](Spider-for-Graduate-Student-Information-System-With-UI.exe)  ![](Spider-for-Graduate-Student-Information-System-With-UI.PNG)
+[Win程序:](Spider-for-Graduate-Student-Information-System-With-UI.exe) 
+
+ ![](Spider-for-Graduate-Student-Information-System-With-UI.PNG)
 
 **新**: 新增 [LZU研究生综合管理信息系统爬虫](http://gms.lzu.edu.cn/graduate/index.do) [脚本](Spider-for-LZU-GraduateSTU-INFO-System.py)
 
