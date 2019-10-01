@@ -5,7 +5,7 @@
 
 Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
-**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) , 使用前请 ***确保Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
+**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
 
 **新**: 新增 学生信息系统爬虫带UI版 [脚本](Spider-for-Student-Information-System-With-UI.py)
 
@@ -41,7 +41,7 @@ UI版使用Tkinter
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
-**NEW**: add [Store-LZU-STU-INFO-Into-Sqlite](Store-LZU-STU-INFO-Into-Sqlite.py) and [Store-LZU-GraduateSTU-INFO-Into-Sqlite](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py). Before using it, please ***ensure that all crawled HTML files are stored under the Data folder*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The SQLite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
+**NEW**: add [Store-LZU-STU-INFO-Into-Sqlite](Store-LZU-STU-INFO-Into-Sqlite.py) and [Store-LZU-GraduateSTU-INFO-Into-Sqlite](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py). Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
 
 **NEW**: Add Spider-for-Student-Information-System-With-UI [Script](Spider-for-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Student-Information-System-With-UI.exe) 
 
