@@ -5,23 +5,29 @@
 
 Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
 
-**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
+**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-STU-INFO-Into-Sqlite.exe) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
+
+参考了[这里](https://www.cnblogs.com/hushaojun/p/7825771.html), 我另外提供了sqlite数据库db文件转Excel的xls文件的[脚本](Convert-Sqlite-to-Excel.py)和[Win程序](Convert-Sqlite-to-Excel.exe)，供选择使用。记住在使用前安装xlwt库。
 
 **新**: 新增 学生信息系统爬虫带UI版 [脚本](Spider-for-Student-Information-System-With-UI.py)
 
 [Win程序:](Spider-for-Student-Information-System-With-UI.exe) 
 
-![](Spider-for-Student-Information-System-With-UI.PNG) 
+![](Spider-for-Student-Information-System-With-UI.PNG)
+
+[Ubuntu程序](Ubuntu-Spider-for-Student-Information-System-With-UI)
 
 研究生综合管理信息系统爬虫带UI版 [脚本](Spider-for-Graduate-Student-Information-System-With-UI.py)
 
-[Win程序:](Spider-for-Graduate-Student-Information-System-With-UI.exe) 
+[Win程序:](Spider-for-Graduate-Student-Information-System-With-UI.exe)
 
  ![](Spider-for-Graduate-Student-Information-System-With-UI.PNG)
 
+[Ubuntu程序](Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
+
 **新**: 新增 [LZU研究生综合管理信息系统爬虫](http://gms.lzu.edu.cn/graduate/index.do) [脚本](Spider-for-LZU-GraduateSTU-INFO-System.py)
 
-学生信息系统爬虫适用于 [LZU](http://jwk.lzu.edu.cn) , [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) , [CUC](http://jw.cuc.edu.cn/academic/common/security/login.jsp)等的同类教务系统（完美贴合优慕课在线教育教务系统）。
+学生信息系统爬虫[脚本](Spider-for-Student-Information-System.py)适用于 [LZU](http://jwk.lzu.edu.cn) , [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) , [CUC](http://jw.cuc.edu.cn/academic/common/security/login.jsp)等的同类教务系统（完美贴合优慕课在线教育教务系统）。
 
 验证码采用Tesseract-OCR识别,其中LZU综合管理信息系统爬虫验证码识别准确率在2/3左右。
 
@@ -33,7 +39,7 @@ UI版使用Tkinter
 
 ***Win UI版直接运行使用时请确保已经安装了Tesseract-OCR并且已经将Tesseract添加到了系统Path变量中。***
 
-*运行Python脚本时还需要满足requirements.txt中的库要求*
+*运行上述Python脚本时还需要满足requirements.txt中的库要求*
 
 **警告**：
 
@@ -41,15 +47,21 @@ UI版使用Tkinter
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
-**NEW**: add [Store-LZU-STU-INFO-Into-Sqlite](Store-LZU-STU-INFO-Into-Sqlite.py) and [Store-LZU-GraduateSTU-INFO-Into-Sqlite](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py). Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
+**NEW**: add Store-LZU-STU-INFO-Into-Sqlite [Script](Store-LZU-STU-INFO-Into-Sqlite.py)  [Windows Program](Store-LZU-STU-INFO-Into-Sqlite.exe) and Store-LZU-GraduateSTU-INFO-Into-Sqlite [Script](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Windows Program](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) . Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
 
-**NEW**: Add Spider-for-Student-Information-System-With-UI [Script](Spider-for-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Student-Information-System-With-UI.exe) 
+Referring to [here](https://www.cnblogs.com/hushaojun/p/7825771.html), I also provide [script](Convert-Sqlite-to-Excel.py) and [Windows Program](Convert-Sqlite-to-Excel.exe) for the SQLite database db file to be transferred to Excel xls file. Remember to install the **xlwt** library before using it.
 
-Spider-for-Graduate-Student-Information-System-With-UI [Script](Spider-for-Graduate-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Graduate-Student-Information-System-With-UI.exe) 
+**NEW**: Add Spider-for-Student-Information-System-With-UI [Script](Spider-for-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Student-Information-System-With-UI.exe)
+
+[Ubuntu Program](Ubuntu-Spider-for-Student-Information-System-With-UI)
+
+Spider-for-Graduate-Student-Information-System-With-UI [Script](Spider-for-Graduate-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Graduate-Student-Information-System-With-UI.exe)
+
+[Ubuntu Program](Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
 
 **NEW**: Add [Spider-for-LZU-GraduateSTU-INFO-System](http://gms.lzu.edu.cn/graduate/index.do) [Script](Spider-for-LZU-GraduateSTU-INFO-System.py).
 
-Spider-for-Student-Information-Systemm It is suitable for STU-INFO systems such as [LZU](http://jwk.lzu.edu.cn) , [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) and [CUC](http://jw.cuc.edu.cn/academic/common/security/login.jsp). (Perfect fit for online educational administration system of 优慕课)
+Spider-for-Student-Information-System [Script](Spider-for-Student-Information-System.py) is suitable for STU-INFO systems such as [LZU](http://jwk.lzu.edu.cn) , [QDU](http://jw.qdu.edu.cn/academic/common/security/login.jsp) and [CUC](http://jw.cuc.edu.cn/academic/common/security/login.jsp). (Perfect fit for online educational administration system of 优慕课)
 
 The Captcha is identified by Tesseract-OCR, Captcha recognition accuracy in Spider-for-LZU-GraduateSTU-INFO-System is about 2/3.
 
@@ -61,7 +73,7 @@ UI Coded with Tkinter
 
 ***When you run Win UI version directly, make sure that Tesseract-OCR is installed and that Tesseract has been added to the system Path variable.***
 
-*When running Python scripts, you also need to meet library requirements in requirements.txt*
+*When running Python scripts as above, you also need to meet library requirements in requirements.txt*
 
 **Warning**:
 
