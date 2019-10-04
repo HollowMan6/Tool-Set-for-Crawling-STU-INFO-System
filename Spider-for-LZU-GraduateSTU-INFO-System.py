@@ -21,8 +21,6 @@ import io
 import os
 # 正则表达式搜索 Regular expression search
 import re
-# 使能够在命令行下输入密码 Enable Entering a password at the command line
-import getpass
 # 爬虫库导入 Import Spider
 import requests
 # 识别验证码 Captcha Verification
@@ -159,7 +157,6 @@ class qdujw:
                 qdujw().login(sid, passwd)
         except Exception:
             threadmax.release()
-            pass
 
 
 dlist = []
