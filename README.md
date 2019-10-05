@@ -17,6 +17,8 @@
 
 (English version is down below)
 
+[Python库依赖](../../network/dependencies)
+
 **新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-STU-INFO-Into-Sqlite.exe) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
 
 参考了[这里](https://www.cnblogs.com/hushaojun/p/7825771.html), 我另外提供了sqlite数据库db文件转Excel的xls文件的[脚本](Convert-Sqlite-to-Excel.py)和[Win程序](Convert-Sqlite-to-Excel.exe)，供选择使用。记住在使用前安装xlwt库。
@@ -60,6 +62,8 @@ UI版使用Tkinter
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
 # Tool Set for Crawling STU INFO System
+
+[Python Dependencies](../../network/dependencies)
 
 **NEW**: add Store-LZU-STU-INFO-Into-Sqlite [Script](Store-LZU-STU-INFO-Into-Sqlite.py)  [Windows Program](Store-LZU-STU-INFO-Into-Sqlite.exe) and Store-LZU-GraduateSTU-INFO-Into-Sqlite [Script](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Windows Program](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) . Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
 
