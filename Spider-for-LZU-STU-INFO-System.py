@@ -113,10 +113,26 @@ class qdujw:
 
                 # 验证码错误 Wrong Captcha
                 if re.search(u'\u9a8c\u8bc1\u7801\u4e0d\u6b63\u786e', r.text):
+                    # 若要使用下面的注释功能，请在目录下创建wrong文件夹
+                    # To use the following annotation function, create the "wrong" folder under the directory
+                    # 将错误验证码保存在wrong文件夹下
+                    # Save the erroe verification code in the "wrong" folder
+
+                    # wwimg = open("wrong/"+codetext+'.png', 'wb')
+                    # wwimg.write(code.content)
+                    # wwimg.close()
                     qdujw().login(sid, passwd)
 
                 # 验证码匹配成功 Captcha matched
                 else:
+                    # 若要使用下面的注释功能，请在目录下创建right文件夹
+                    # To use the following annotation function, create the "right" folder under the directory
+                    # 将正确验证码保存在right文件夹下
+                    # Save the correct verification code in the "right" folder
+
+                    # wrimg = open("right/"+codetext+'.png', 'wb')
+                    # wrimg.write(code.content)
+                    # wrimg.close()
                     userpage = self.s.get(userurl).content
                     gbcontent = str(userpage.decode('gb2312', 'ignore'))
                     if "权限不够,访问被拒绝" in gbcontent:  # Refuse to access

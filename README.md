@@ -1,11 +1,21 @@
-# Spider-for-LZU-STU-INFO-System
+# 学生信息系统爬取工具集
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![last-commit](https://img.shields.io/github/last-commit/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System)](../../graphs/commit-activity)
+[![release-date](https://img.shields.io/github/release-date/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System)](../../releases)
+
+[![Followers](https://img.shields.io/github/followers/HollowMan6?style=social)](https://github.com/HollowMan6?tab=followers)
+[![watchers](https://img.shields.io/github/watchers/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System?style=social)](../../watchers)
+[![stars](https://img.shields.io/github/stars/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System?style=social)](../../stargazers)
+[![forks](https://img.shields.io/github/forks/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System?style=social)](../../stargazers)
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://hollowman6.github.io/fund.html)
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/HollowMan6/Spider-for-LZU-STU-INFO-System.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Spider-for-LZU-STU-INFO-System/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/HollowMan6/Spider-for-LZU-STU-INFO-System.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Spider-for-LZU-STU-INFO-System/context:python)
+[![Repo-Size](https://img.shields.io/github/repo-size/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System.svg)](../../archive/master.zip)
 
-Spider-for-LZU-STU-INFO-System(LZU教务管理信息系统爬虫)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System/context:python)
+
+(English version is down below)
 
 **新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-STU-INFO-Into-Sqlite.exe) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
 
@@ -48,6 +58,8 @@ UI版使用Tkinter
 ***仅供测试使用，不可用于任何非法用途！***
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
+
+# Tool Set for Crawling STU INFO System
 
 **NEW**: add Store-LZU-STU-INFO-Into-Sqlite [Script](Store-LZU-STU-INFO-Into-Sqlite.py)  [Windows Program](Store-LZU-STU-INFO-Into-Sqlite.exe) and Store-LZU-GraduateSTU-INFO-Into-Sqlite [Script](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Windows Program](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) . Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
 
