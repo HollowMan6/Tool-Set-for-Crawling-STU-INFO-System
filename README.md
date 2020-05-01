@@ -19,25 +19,25 @@
 
 [Python库依赖](../../network/dependencies)
 
-**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-STU-INFO-Into-Sqlite.exe) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Win程序](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
+**新**: 新增 将学生信息存入Sqlite数据库 [脚本](Store-LZU-STU-INFO-Into-Sqlite.py) [Win程序](Excutables/Store-LZU-STU-INFO-Into-Sqlite.exe) 和 将研究生综合管理信息存入Sqlite数据库 [脚本](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Win程序](Excutables/Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) , 使用前请 ***确保程序运行目录Data文件夹下存放着所有经爬取过的html文件***，并且 ***电脑上已经安装了Sqlite3并且已经将Sqlite3添加到了系统Path变量中***。此仓库下已经包含了sqlite数据库文件[Student.db](Student.db), 其生成SQL语句见附录。
 
-参考了[这里](https://www.cnblogs.com/hushaojun/p/7825771.html), 我另外提供了sqlite数据库db文件转Excel的xls文件的[脚本](Convert-Sqlite-to-Excel.py)和[Win程序](Convert-Sqlite-to-Excel.exe)，供选择使用。记住在使用前安装xlwt库。
+参考了[这里](https://www.cnblogs.com/hushaojun/p/7825771.html), 我另外提供了sqlite数据库db文件转Excel的xls文件的[脚本](Convert-Sqlite-to-Excel.py)和[Win程序](Excutables/Convert-Sqlite-to-Excel.exe)，供选择使用。记住在使用前安装xlwt库。
 
 **新**: 新增 学生信息系统爬虫带UI版 [脚本](Spider-for-Student-Information-System-With-UI.py)
 
-[Win程序:](Spider-for-Student-Information-System-With-UI.exe) 
+[Win程序:](Excutables/Spider-for-Student-Information-System-With-UI.exe) 
 
-![](Spider-for-Student-Information-System-With-UI.PNG)
+![](Pics/Spider-for-Student-Information-System-With-UI.PNG)
 
-[Ubuntu程序](Ubuntu-Spider-for-Student-Information-System-With-UI)
+[Ubuntu程序](Excutables/Ubuntu-Spider-for-Student-Information-System-With-UI)
 
 研究生综合管理信息系统爬虫带UI版 [脚本](Spider-for-Graduate-Student-Information-System-With-UI.py)
 
-[Win程序:](Spider-for-Graduate-Student-Information-System-With-UI.exe)
+[Win程序:](Excutables/Spider-for-Graduate-Student-Information-System-With-UI.exe)
 
- ![](Spider-for-Graduate-Student-Information-System-With-UI.PNG)
+ ![](Pics/Spider-for-Graduate-Student-Information-System-With-UI.PNG)
 
-[Ubuntu程序](Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
+[Ubuntu程序](Excutables/Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
 
 **新**: 新增 [LZU研究生综合管理信息系统爬虫](http://gms.lzu.edu.cn/graduate/index.do) [脚本](Spider-for-LZU-GraduateSTU-INFO-System.py)
 
@@ -65,17 +65,17 @@ UI版使用Tkinter
 
 [Python Dependencies](../../network/dependencies)
 
-**NEW**: add Store-LZU-STU-INFO-Into-Sqlite [Script](Store-LZU-STU-INFO-Into-Sqlite.py)  [Windows Program](Store-LZU-STU-INFO-Into-Sqlite.exe) and Store-LZU-GraduateSTU-INFO-Into-Sqlite [Script](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Windows Program](Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) . Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
+**NEW**: add Store-LZU-STU-INFO-Into-Sqlite [Script](Store-LZU-STU-INFO-Into-Sqlite.py)  [Windows Program](Excutables/Store-LZU-STU-INFO-Into-Sqlite.exe) and Store-LZU-GraduateSTU-INFO-Into-Sqlite [Script](Store-LZU-GraduateSTU-INFO-Into-Sqlite.py) [Windows Program](Excutables/Store-LZU-GraduateSTU-INFO-Into-Sqlite.exe) . Before using it, please ***ensure that all crawled HTML files are stored under the "Data" folder where the program is excuted*** and ***the computer has already installed Sqlite3 and Sqlite3 has been added to the system Path variable***. The sqlite database file [Student.db](Student.db) has been included in the repository. The SQL statements generating Student.db are listed in the appendix.
 
-Referring to [here](https://www.cnblogs.com/hushaojun/p/7825771.html), I also provide [script](Convert-Sqlite-to-Excel.py) and [Windows Program](Convert-Sqlite-to-Excel.exe) for the SQLite database db file to be transferred to Excel xls file. Remember to install the **xlwt** library before using it.
+Referring to [here](https://www.cnblogs.com/hushaojun/p/7825771.html), I also provide [script](Convert-Sqlite-to-Excel.py) and [Windows Program](Excutables/Convert-Sqlite-to-Excel.exe) for the SQLite database db file to be transferred to Excel xls file. Remember to install the **xlwt** library before using it.
 
-**NEW**: Add Spider-for-Student-Information-System-With-UI [Script](Spider-for-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Student-Information-System-With-UI.exe)
+**NEW**: Add Spider-for-Student-Information-System-With-UI [Script](Spider-for-Student-Information-System-With-UI.py) , [Windows Program](Excutables/Spider-for-Student-Information-System-With-UI.exe)
 
-[Ubuntu Program](Ubuntu-Spider-for-Student-Information-System-With-UI)
+[Ubuntu Program](Excutables/Ubuntu-Spider-for-Student-Information-System-With-UI)
 
-Spider-for-Graduate-Student-Information-System-With-UI [Script](Spider-for-Graduate-Student-Information-System-With-UI.py) , [Windows Program](Spider-for-Graduate-Student-Information-System-With-UI.exe)
+Spider-for-Graduate-Student-Information-System-With-UI [Script](Spider-for-Graduate-Student-Information-System-With-UI.py) , [Windows Program](Excutables/Spider-for-Graduate-Student-Information-System-With-UI.exe)
 
-[Ubuntu Program](Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
+[Ubuntu Program](Excutables/Ubuntu-Spider-for-Graduate-Student-Information-System-With-UI)
 
 **NEW**: Add [Spider-for-LZU-GraduateSTU-INFO-System](http://gms.lzu.edu.cn/graduate/index.do) [Script](Spider-for-LZU-GraduateSTU-INFO-System.py).
 
