@@ -2,6 +2,7 @@
 
 [![last-commit](https://img.shields.io/github/last-commit/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System)](../../graphs/commit-activity)
 [![release-date](https://img.shields.io/github/release-date/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System)](../../releases)
+![Python package](https://github.com/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System/workflows/Python%20package/badge.svg)
 
 [![Followers](https://img.shields.io/github/followers/HollowMan6?style=social)](https://github.com/HollowMan6?tab=followers)
 [![watchers](https://img.shields.io/github/watchers/HollowMan6/Tool-Set-for-Crawling-STU-INFO-System?style=social)](../../watchers)
