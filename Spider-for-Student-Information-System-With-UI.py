@@ -140,7 +140,7 @@ class qdujw:
                     else:
                         imageid = ''.join(re.findall(
                             r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))
-                        imagepage = url+"/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
+                        imagepage = url+"/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid+"&dataName=photo"
                         name = ''.join(re.findall(r'name="realname" value="(.+?)"',
                                                   str(userpage.decode('utf-8', 'ignore'))))
                         image = self.s.get(imagepage).content
@@ -166,7 +166,7 @@ class qdujw:
                         # When the first thread releases the lock, subsequent threads compete.
                         lock.acquire()
                         fw = open("success.txt", 'a')
-                        fw.write(sid)
+                        fw.write(sid+"\n")
                         fw.close()
                         # 释放锁 Release lock
                         lock.release()

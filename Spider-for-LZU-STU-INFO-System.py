@@ -142,7 +142,7 @@ class qdujw:
                     else:
                         imageid = ''.join(re.findall(
                             r'"/academic/manager/studentinfo/showStudentImage.jsp?id=(.+?)"', gbcontent))
-                        imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid
+                        imagepage = "http://jwk.lzu.edu.cn/academic/manager/studentinfo/showStudentImage.jsp?id="+imageid+"&dataName=photo"
                         name = ''.join(re.findall(r'name="realname" value="(.+?)"',
                                                   str(userpage.decode('utf-8', 'ignore'))))
                         image = self.s.get(imagepage).content
