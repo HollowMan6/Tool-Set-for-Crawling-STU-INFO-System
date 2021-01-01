@@ -2,7 +2,7 @@
 # from https://www.cnblogs.com/hushaojun/p/7825771.html
 import sqlite3 as sqlite
 # 导入Excel文件处理库 Import Excel File Processing Library
-from xlwt import *
+from xlwt import * # lgtm [py/polluting-import]
 
 def sqlite_get_col_names(cur, select_sql):
     cur.execute(select_sql)
